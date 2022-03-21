@@ -1,0 +1,23 @@
+﻿<Window x:Class="ImageStorageSystem.ImageViewer.CLient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageStorageSystem.ImageViewer.CLient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="lbImages" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,66">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding FileName}" Foreground="Red" FontSize="20" />
+                        <Image Width="200" Source="{Binding RawData}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="btnGetData" Content="Get Data" HorizontalAlignment="Left" Margin="313,383,0,0" VerticalAlignment="Top" Height="41" Width="157"/>
+
+    </Grid>
+</Window>

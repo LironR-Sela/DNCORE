@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ImageStorageSystem.Backend.Lib\ImageStorageSystem.Backend.Lib.csproj" />
+    <ProjectReference Include="..\ImageStorageSystem.Lib.Models\ImageStorageSystem.Lib.Models.csproj" />
+  </ItemGroup>
+
+
+</Project>
