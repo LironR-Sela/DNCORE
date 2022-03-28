@@ -1,0 +1,20 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/data",
+      "DownstreamSchema": "https",
+      "DownstreamHostAndPort": [
+        {
+          "Host": "https://localhost",
+          "Port": 000
+        }
+      ],
+      "UpstreamPathTemplate": "/api/data/secured/all",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+    ,
+    {
+
+    }
+  ]
+}

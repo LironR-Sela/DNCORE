@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# PC001: API not supported on all platforms
+dotnet_diagnostic.PC001.severity = warning

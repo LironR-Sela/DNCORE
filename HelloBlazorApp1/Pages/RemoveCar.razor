@@ -1,0 +1,32 @@
+﻿@page "/deletecar/{carId:int}"
+@using HelloBlazorApp1.Models
+@using HelloBlazorApp1.Infra
+@inject IDataService _dataService
+@inject NavigationManager _navService
+
+<h3>Remove Car</h3>
+
+
+Are you sure?!
+
+<div>
+    <button @onclick="Remove">Yes!</button>
+    <button @onclick="Cancel">No!</button>
+</div>
+
+@code {
+    [Parameter]
+    public int carId { get; set; }
+
+    protected async Task Remove()
+    {
+        var result = await _dataService.RemoveCar(carId);
+        if (result)
+            _navService.NavigateTo("/allcars");
+    }
+
+    protected async Task Cancel()
+    {
+        _navService.NavigateTo("/allcars");
+    }
+}

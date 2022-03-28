@@ -1,0 +1,45 @@
+﻿@page "/allcars"
+@using HelloBlazorApp1.Models
+@using HelloBlazorApp1.Infra
+@inject IDataService _dataService
+@inject NavigationManager _navService
+
+<h3>All Cars</h3>
+
+@if (cars == null)
+{
+    <div>Loading cars.... :)</div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Brand</td>
+                <td>Color</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in cars)
+            {
+                <tr>
+                    <td>@car.Brand</td>
+                    <td>@car.Color</td>
+                    <td>
+                        <a href="/deletecar/@car.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    Car[] cars;
+
+    protected async override Task OnInitializedAsync()
+    {
+        cars = (await _dataService.GetAll()).ToArray();
+    }
+}

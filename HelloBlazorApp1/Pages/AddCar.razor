@@ -1,0 +1,45 @@
+﻿@page "/addcar"
+@using HelloBlazorApp1.Models
+@using HelloBlazorApp1.Infra
+@inject IDataService _dataService
+@inject NavigationManager _navService
+
+<h3>Add New Car</h3>
+
+<EditForm Model="@newCar" OnValidSubmit="AddNewCar">
+    <DataAnnotationsValidator />
+    <div class="form-group-row">
+        <label class="control-label col-md-12">Brand</label>
+        <div class="col-md-4">
+            <input class="form-control" @bind="newCar.Brand" />
+        </div>
+        <ValidationMessage For="@(() => newCar.Brand)" />
+    </div>
+    <div class="form-group-row">
+        <label class="control-label col-md-12">Color</label>
+        <div class="col-md-4">
+            <input class="form-control" @bind="newCar.Color" />
+        </div>
+        <ValidationMessage For="@(() => newCar.Color)" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <button class="btn btn-primary" @onclick="Cancel">cancel</button>
+    </div>
+</EditForm>
+
+@code {
+    Car newCar = new Car();
+
+    protected async Task AddNewCar()
+    {
+        var result = await _dataService.AddCar(newCar);
+        if (result)
+            _navService.NavigateTo("/allcars");
+    }
+
+    protected async Task Cancel()
+    {
+        _navService.NavigateTo("/allcars");
+    }
+}
